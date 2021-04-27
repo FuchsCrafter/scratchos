@@ -10,7 +10,7 @@ Jeder kann mitmachen, wenn du...
 * Mit Python und GitHub umgehen kanst und
 * Gute Ideen hast
 ***
-Wenn du zum [ScratchOS][ Team gehörst, dann schreibe bitte einen Kommentar in den Disskussionen dieser Seite, oder kommentiere mein [Scratch-Profil](https://scratch.mit.edu/users/FuchsCrafter/) mit deinem Github-nanmen!
+Wenn du zum [ScratchOS] Team gehörst, dann schreibe bitte einen Kommentar in den Disskussionen dieser Seite, oder kommentiere mein [Scratch-Profil](https://scratch.mit.edu/users/FuchsCrafter/) mit deinem Github-nanmen!
 ***
 &copy; 2021 SOS Team ( [Website] | [Studio] )
 
