@@ -5,21 +5,15 @@
 import tkinter as tk
 import os, sys
 import sqlite3
-import time
+# import time
 
-from sys32.logging import *
-
-
-
+# from sys32.logging import *
 
 # Variablen
 logourl = "system/assets/icon.png"
 iconurl ="system/assets/icon.ico"
 mainfont = "Arial"
 datenpfad = "system/USERDATA"
-
-
-
 
 # Begruessung
 print("""
