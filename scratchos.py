@@ -5,8 +5,32 @@
 import tkinter as tk
 import os, sys
 import sqlite3
-# import time
+import time
 
+# Logfile setup
+logfile = open("SYSLOG.log", "w")
+newtext = ("""
+===========================================================================
+SCRATCHOS
+LOGFILE
+Datum: """ + time.asctime() + """
+===========================================================================
+""")
+logfile.writelines(newtext)
+logfile.close()
+def addlog(newtext):
+    logfile = open("SYSLOG.log", "a")
+    addtext = time.asctime(), " : ", newtext, "\n"
+    logfile.writelines(addtext)
+    logfile.close()
+def copylog():
+    logfile = open("SYSLOG.log", "r")
+    tmplog = logfile.readlines()
+    logfile.close()
+    errlogf = open("system/crash.log", "w")
+    errlogf.writelines(tmplog)
+    errlogf.close()
+    
 # from sys32.logging import *
 
 # Variablen
@@ -32,16 +56,11 @@ print("""
 print("Benutzeroberfläche lädt...")
 addlog("Laden der Benutzeroberfläche...")
 
-
-
-
 def destroySetupscreen():
     setupscr.destroy()
 
 def destroyLogin():
     loginscr.destroy()
-
-
 
 # Datebank funktion
 def addDemouser():
@@ -87,9 +106,6 @@ def addDemouser():
         connection.close()
         addlog("Datenbank-Verbindung erfolgreich geschlossen.")
 
-
-
-
 # Setupscreen funktion
 def setupscreen():
     # Startup-Benutzeroberflaeche
@@ -133,9 +149,6 @@ def setupscreen():
     # setupscr.iconbitmap('') 
 
     setupscr.mainloop()
-
-
-
 
 # Loginscreen funktion
 def loginscreen():
@@ -228,18 +241,6 @@ def checkpswd():
 
 def startos():
     destroyLogin()
-
-
-
-
-
-
-
-
-
-
-
-
 
 # =========================================================================================================
 # Main programm
