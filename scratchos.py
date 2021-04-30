@@ -7,40 +7,14 @@ import os, sys
 import sqlite3
 import time
 
-
-
-# Logfile setup
-logfile = open("SYSLOG.log", "w")
-newtext = ("""
-===========================================================================
-SCRATCHOS
-LOGFILE
-Datum: """ + time.asctime() + """
-===========================================================================
-
-""")
-logfile.writelines(newtext)
-logfile.close()
-def addlog(newtext):
-    logfile = open("SYSLOG.log", "a")
-    addtext = time.asctime(), " : ", newtext, "\n"
-    logfile.writelines(addtext)
-    logfile.close()
-def copylog():
-    logfile = open("SYSLOG.log", "r")
-    tmplog = logfile.readlines()
-    logfile.close()
-    errlogf = open("system/crash.log", "w")
-    errlogf.writelines(tmplog)
-    errlogf.close()
-
-
+from sys32.logging import *
 
 
 
 
 # Variablen
 logourl = "system/assets/icon.png"
+iconurl ="system/assets/icon.ico"
 mainfont = "Arial"
 datenpfad = "system/USERDATA"
 
@@ -162,6 +136,8 @@ def setupscreen():
 
     # Fenster mainloop
     addlog("Setup: Fenster Mainloop ausführen")
+    # setupscr.iconbitmap('') 
+
     setupscr.mainloop()
 
 
@@ -217,10 +193,15 @@ def loginscreen():
     loginscr.mainloop()
 
 def loginfn():
-    enteredUname = uname_e.get()
-    enteredPswd = pswd_e.get()
     global loginSuccesfull
     loginSuccesfull = False
+    try:
+        enteredUname = uname_e.get()
+        enteredPswd = pswd_e.get()
+    except:
+        enteredUname = " "
+        enteredPswd = " "
+
 
     connection = sqlite3.connect(datenbankpfad)
     cursor = connection.cursor()
@@ -271,7 +252,3 @@ def startos():
 setupscreen()
 addDemouser()
 loginscreen()
-
-
-
-
