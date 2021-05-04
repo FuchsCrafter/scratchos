@@ -3,6 +3,15 @@
 
 [ScratchOS] ist das deutsche in-Scratch Betriebssystem. Du kannst das [Studio] unter https://scratch.mit.edu/studios/29226659/ finden. Wir haben auch eine eigene [Website] unter http://scratchos.fuchscrafter.de.
 ***
+### Benötigte Bibliotheken:
+#### (pip install \<modulname> )
+ 
+os, sys
+
+sqlite3
+
+tk
+***
 Dieses Repo ist die Python.edition von [ScratchOS], an der bald hoffentlich mehr Leute arbeiten :D
 Wir coden gemeinsam am OS. Dies soll nicht wirklich ein OS werden, aber hinterher wenigstenst eine Ausfürbare .exe - datei.
 Jeder kann mitmachen, wenn du...
