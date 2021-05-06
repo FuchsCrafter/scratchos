@@ -6,11 +6,14 @@
 ### Benötigte Bibliotheken:
 #### (pip install \<modulname> )
  
-os, sys
+* os, sys (Vorinstalliert)
+* * pip install os
+* * pip install sys
 
-sqlite3
+* sqlite3
+* * pip install sqlite3
 
-tk
+* tk (Vorinstalliert)
 ***
 Dieses Repo ist die Python.edition von [ScratchOS], an der bald hoffentlich mehr Leute arbeiten :D
 Wir coden gemeinsam am OS. Dies soll nicht wirklich ein OS werden, aber hinterher wenigstenst eine Ausfürbare .exe - datei.
