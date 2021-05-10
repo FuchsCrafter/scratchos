@@ -25,7 +25,8 @@ Jeder kann mitmachen, wenn du...
 Wenn du zum [ScratchOS] Team gehörst, dann schreibe bitte einen Kommentar in den Disskussionen dieser Seite, oder kommentiere mein [Scratch-Profil](https://scratch.mit.edu/users/FuchsCrafter/) mit deinem Github-nanmen!
 ***
 &copy; 2021 SOS Team ( [Website] | [Studio] )
-
+***
+ScratchOS To do's: https://github.com/users/FuchsCrafter/projects/3
 
 
 
