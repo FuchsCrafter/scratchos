@@ -1,4 +1,8 @@
 # Scratchos
+### ScratchOS wird nun nicht mehr aktiv weiterentwickelt. [Zum Artikel](http://scratchos.fuchscrafter.de/faq/warum-scratchos-tot-ist/)
+
+***
+***
 ![logo]
 
 [ScratchOS] ist das deutsche in-Scratch Betriebssystem. Du kannst das [Studio] unter https://scratch.mit.edu/studios/29226659/ finden. Wir haben auch eine eigene [Website] unter http://scratchos.fuchscrafter.de.
