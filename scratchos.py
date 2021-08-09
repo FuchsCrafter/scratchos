@@ -3,41 +3,25 @@
 # DONT TUCH ANYTHING IF YOU DONT KNOW EXACTLY WAHT YOU ARE DOING!
 
 import tkinter as tk
+from PIL import ImageTk, Image
 import os, sys
 import sqlite3
 import time
 
-# Logfile setup
-logfile = open("SYSLOG.log", "w")
-newtext = ("""
-===========================================================================
-SCRATCHOS
-LOGFILE
-Datum: """ + time.asctime() + """
-===========================================================================
-""")
-logfile.writelines(newtext)
-logfile.close()
-def addlog(newtext):
-    logfile = open("SYSLOG.log", "a")
-    addtext = time.asctime(), " : ", newtext, "\n"
-    logfile.writelines(addtext)
-    logfile.close()
-def copylog():
-    logfile = open("SYSLOG.log", "r")
-    tmplog = logfile.readlines()
-    logfile.close()
-    errlogf = open("system/crash.log", "w")
-    errlogf.writelines(tmplog)
-    errlogf.close()
-    
-# from sys32.logging import *
+from sys32.logging import *
+
+
+
 
 # Variablen
 logourl = "system/assets/icon.png"
 iconurl ="system/assets/icon.ico"
+burger_menuurl = "system/assets/menu.png"
 mainfont = "Arial"
 datenpfad = "system/USERDATA"
+
+
+
 
 # Begruessung
 print("""
@@ -52,9 +36,16 @@ print("""
 ╚█████╗░██║░░╚═╝██████╔╝███████║░░░██║░░░██║░░╚═╝███████║░██║░░██║╚█████╗░
 ░╚═══██╗██║░░██╗██╔══██╗██╔══██║░░░██║░░░██║░░██╗██╔══██║░██║░░██║░╚═══██╗
 ██████╔╝╚█████╔╝██║░░██║██║░░██║░░░██║░░░╚█████╔╝██║░░██║░╚█████╔╝██████╔╝
-╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝░░╚════╝░╚═════╝░ """)
+╚══░══╝░░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝░░╚════╝░╚═════╝░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+▒█▀▀█░▒█░░▒█░░░░▒█▀▀▀░▒█▀▀▄░▀█▀░▀▀█▀▀░▀█▀░▒█▀▀▀█░▒█▄░▒█ 
+▒█▄▄█░▒█▄▄▄█░░░░▒█▀▀▀░▒█░▒█░▒█░░░▒█░░░▒█░░▒█░░▒█░▒█▒█▒█ 
+▒█░░░░░░▒█░░░░░░▒█▄▄▄░▒█▄▄▀░▄█▄░░▒█░░░▄█▄░▒█▄▄▄█░▒█░░▀█ """)
 print("Benutzeroberfläche lädt...")
 addlog("Laden der Benutzeroberfläche...")
+
+
+
 
 def destroySetupscreen():
     setupscr.destroy()
@@ -62,7 +53,12 @@ def destroySetupscreen():
 def destroyLogin():
     loginscr.destroy()
 
-# Datebank funktion
+def destroyDesktop():
+    desktop1.destroy()
+
+
+
+# Datenbank funktion
 def addDemouser():
     global datenbankpfad
     datenbankpfad = datenpfad + "/USERS.db"
@@ -106,6 +102,9 @@ def addDemouser():
         connection.close()
         addlog("Datenbank-Verbindung erfolgreich geschlossen.")
 
+
+
+
 # Setupscreen funktion
 def setupscreen():
     # Startup-Benutzeroberflaeche
@@ -115,7 +114,7 @@ def setupscreen():
     setupscr.geometry("500x250") # Groesse des fensters
     addlog("Setup: Fenstergröße festgelegt.")
     tk.Tk.resizable(setupscr, width=False, height=False) # fenster soll man nich verändern
-    addlog("Setup: Fenstergröße als nicht veränderbar festgelegt.")
+    addlog("Setup: Fenstergroeße als nicht vereanderbar festgelegt.")
     addlog("Setup: Fenster geladen.")
 
 
@@ -149,6 +148,9 @@ def setupscreen():
     # setupscr.iconbitmap('') 
 
     setupscr.mainloop()
+
+
+
 
 # Loginscreen funktion
 def loginscreen():
@@ -240,10 +242,42 @@ def checkpswd():
         sys.exit(0)
 
 def startos():
-    destroyLogin()
+    # destroyLogin()
+
+
+    global desktop1
+    desktop1 = tk.Tk() # desktop 1 ist der normale desktop 
+    desktop1.title("ScratchOS desktop")
+    addlog("Desktop1: Fenster erzeugt.")
+    desktop1.geometry("480x360") # Groesse des fensters
+    tk.Tk.resizable(desktop1, width=False, height=False) # fenster soll man nich verändern
+    icon = tk.PhotoImage(file=logourl)
+    desktop1.iconphoto(False, icon)
+    addlog("Desktop1: Fenster geladen.")
+    menubar = tk.Frame(desktop1, bd=0, height="34", width="480", bg="#0024B3")
+    menubar.pack(side="top", fill="x")
+
+    # menubtn_img = ImageTk.PhotoImage(Image.open(burger_menuurl).resize((32,32)))
+    menubtn_img = tk.PhotoImage(file = burger_menuurl)
+    menubtn = tk.Button(menubar, command=destroyDesktop, image=menubtn_img, text=" ", height=32, width=32, bd=0, highlightthickness = 0, bg="#0024B3")
+    menubtn.pack(side="left")
+    desktop1.mainloop()
+
+
+
 
 # =========================================================================================================
 # Main programm
+
 setupscreen()
 addDemouser()
 loginscreen()
+if True: #loginSuccesfull:
+    addlog("Login erfolgreich.")
+    print("Login erfolgreich.")
+    startos()
+else:
+    addlog("Login nicht erfolgreich.")
+    print("Login nicht erfolgreich.")
+    loginscreen()
+
